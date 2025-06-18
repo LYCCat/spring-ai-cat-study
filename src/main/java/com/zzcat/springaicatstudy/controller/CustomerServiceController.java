@@ -27,7 +27,7 @@ public class CustomerServiceController {
         //2调用chatClient进行对话
         return  serviceChatClient.prompt()
                 .user(prompt)
-                .advisors(a->a.param("conversationId", chatId))
+                .advisors(a->a.param(ChatMemory.CONVERSATION_ID, chatId))
                 .tools(courseTools)
                 .call()
                 .content();
