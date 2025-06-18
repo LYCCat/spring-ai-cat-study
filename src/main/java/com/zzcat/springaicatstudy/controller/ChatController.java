@@ -31,7 +31,7 @@ public class ChatController {
         chatHistoryRepository.save("chat", chatId);
         return chatClient.prompt()
                 .user(prompt)
-                .advisors(a->a.param(ChatMemory.CONVERSATION_ID, chatId))
+                .advisors(a->a.param("conversationId", chatId))
                 .stream()
                 .content();
     }

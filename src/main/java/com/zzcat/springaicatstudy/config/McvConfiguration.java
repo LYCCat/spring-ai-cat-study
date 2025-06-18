@@ -16,6 +16,7 @@ public class McvConfiguration implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("*") // 允许所有来源
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 允许的HTTP方法
-                .allowedHeaders("*"); // 允许所有请求头
+                .allowedHeaders("*")
+                 .exposedHeaders("Content-Disposition");   // 允许所有请求头
     }
 }

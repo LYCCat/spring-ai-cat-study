@@ -3,6 +3,7 @@ package com.zzcat.springaicatstudy.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.observation.conventions.VectorStoreProvider;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
@@ -15,6 +16,7 @@ public class GameController {
     private ChatMemory chatMemory;
     private  final ChatClient chatClient;
     private final ChatClient gameChatClient;
+
 
     @RequestMapping(value = "/game",produces="text/html;charset=UTF-8")
     public Flux<String> chat(String prompt,String chatId){

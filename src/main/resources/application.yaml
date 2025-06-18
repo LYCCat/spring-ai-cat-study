@@ -1,4 +1,8 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 104857600
+      max-request-size: 104857600
   application:
     name: spring-ai-cat-study
   datasource:
@@ -7,10 +11,21 @@ spring:
       username: root
       password: hsp
   ai:
+#    vectorstore:
+#      redis:
+#        initialize-schema: true
+    tools:
+      observations:
+        include-content: true
     openai:
       chat:
         options:
           model: qwen-max-latest
+      embedding:
+        options:
+          model: text-embedding-v3
+          dimensions: 1024
+
       base-url:  https://dashscope.aliyuncs.com/compatible-mode
       api-key: ${OPNEAI_API_KEY}
     ollama:
@@ -20,7 +35,11 @@ spring:
 #root??????debug???
 logging:
   level:
+#    org.springframework.ai.chat.client.advisor: DEBUG #?????debug
+#    org.springframework.ai.tool: DEBUG #?????debug
+    org.springframework.ai: DEBUG #?????debug
+    org.springframework.ai.tool: DEBUG #?????debug
     org.springframework.ai.chat.client.advisor: DEBUG #?????debug
-    com.zzcat.springaicatstudy : debug
+    com.zzcat.springaicatstudy : DEBUG #?????debug
 server:
   port: 8080
